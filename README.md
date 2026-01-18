@@ -26,6 +26,16 @@ The pipeline:
 4. Compares against baseline (prev_log_revenue only)
 5. Outputs market recommendations per artist
 
+```
+python src/feature_exploration.py
+```
+This will output the insights that lead to final feature selections.
+
+```
+python src/data_cleaning.py
+```
+This will clean   Instagram deduplication (removes fan accounts, keeps highest-follower per artist), merges L and T tickes sources (using L as primary, T for avg_price), aligns week start dates (Monday→Sunday).filters to "Primary Performer" only, and creates unified week_id for temporal joins.
+
 ## Modeling Approach
 
 **Target**: `log_revenue = log(1 + total_revenue)`
